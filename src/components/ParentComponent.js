@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useCallback } from "react";
 import Button from "./Button";
 import Count from "./Count";
 import Title from "./Title";
@@ -7,12 +7,13 @@ const ParentComponent = () => {
   const [age, setAge] = useState(0);
   const [score, setScore] = useState(0);
 
-  const ageHandler = () => {
+  const ageHandler = useCallback(() => {
     setAge(age + 1);
-  };
-  const scoreHandler = () => {
+  }, [age]);
+
+  const scoreHandler = useCallback(() => {
     setScore(score + 1);
-  };
+  }, [score]);
   return (
     <div>
       <Title />
